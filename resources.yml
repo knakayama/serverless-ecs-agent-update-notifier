@@ -1,0 +1,21 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Serverless ECS Agent Update Notifier Stack
+
+Parameters:
+  RetentionInDays:
+    Type: String
+    Default: ${self:custom.config.retentionInDays}
+
+Resources:
+  NotifierLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      RetentionInDays:
+        Ref: RetentionInDays
+
+  # TODO:
+  # Can't perform SNS:ListSubscriptionsByTopic to AWS Managed SNS Topic on sls remove executed, so we have to retain this resource.
+  NotifierSnsSubscriptionEcsoptimizedamazonamiupdate:
+    DeletionPolicy: Retain
+    Type: AWS::SNS::Subscription

@@ -1,0 +1,48 @@
+frameworkVersion: ">=1.15.3 <2.0.0"
+
+service: serverless-ecs-optimized-ami-notify
+
+custom:
+  config: ${file(config.yml)}
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: ${self:custom.config.stage}
+  region: ${self:custom.config.region}
+  cfLogs: true
+  memorySize: 128
+  timeout: 5
+  iamRoleStatements:
+    - Sid: KMSAccess
+      Effect: Allow
+      Action:
+        - kms:Decrypt
+      Resource:
+        - "arn:aws:kms:#{AWS::Region}:#{AWS::AccountId}:key/*"
+
+plugins:
+  - serverless-pseudo-parameters
+
+package:
+  individually: true
+  exclude:
+    - "**"
+
+functions:
+  notifier:
+    description: Notify ECS Agent Update to Slack
+    handler: src/handlers/notifier/index.handler
+    events:
+      - sns:
+          # http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS-AMI-SubscribeTopic.html
+          arn: "arn:aws:sns:#{AWS::Region}:177427601217:ecs-optimized-amazon-ami-update"
+    environment:
+      KMS_ENCRYPTED_SLACK_HOOK_URI_PATH: ${self:custom.config.kmsEncryptedSlackHookUriPath}
+      SLACK_CHANNEL: "#${self:custom.config.slackChannel}"
+    package:
+      include:
+        - src/handlers/notifier/**
+        - src/lib/*.js
+
+resources: ${file(resources.yml)}

@@ -1,0 +1,90 @@
+{
+  "Records": [
+    {
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:EXAMPLE",
+      "EventSource": "aws:sns",
+      "Sns": {
+        "SignatureVersion": "1",
+        "Timestamp": "1970-01-01T00:00:00.000Z",
+        "Signature": "EXAMPLE",
+        "SigningCertUrl": "EXAMPLE",
+        "MessageId": "95df01b4-ee98-5cb9-9903-4c221d41eb5e",
+        "Message": {
+          "ECSAgent": {
+            "ReleaseVersion": "1.14.1"
+          },
+          "ECSAmis": [
+            {
+              "ReleaseVersion": "2016.09.g",
+              "AgentVersion": "1.14.1",
+              "ReleaseNotes": "This AMI includes the latest ECS agent 2016.09.g",
+              "OsType": "linux",
+              "OperatingSystemName": "Amazon Linux",
+              "Regions": {
+                "ap-northeast-1": {
+                  "Name": "amzn-ami-2016.09.g-amazon-ecs-optimized",
+                  "ImageId": "ami-f63f6f91"
+                },
+                "ap-southeast-1": {
+                  "Name": "amzn-ami-2016.09.g-amazon-ecs-optimized",
+                  "ImageId": "ami-b4ae1dd7"
+                },
+                "ap-southeast-2": {
+                  "Name": "amzn-ami-2016.09.g-amazon-ecs-optimized",
+                  "ImageId": "ami-fbe9eb98"
+                },
+                "ca-central-1": {
+                  "Name": "amzn-ami-2016.09.g-amazon-ecs-optimized",
+                  "ImageId": "ami-ee58e58a"
+                },
+                "eu-central-1": {
+                  "Name": "amzn-ami-2016.09.g-amazon-ecs-optimized",
+                  "ImageId": "ami-085e8a67"
+                },
+                "eu-west-1": {
+                  "Name": "amzn-ami-2016.09.g-amazon-ecs-optimized",
+                  "ImageId": "ami-95f8d2f3"
+                },
+                "eu-west-2": {
+                  "Name": "amzn-ami-2016.09.g-amazon-ecs-optimized",
+                  "ImageId": "ami-bf9481db"
+                },
+                "us-east-1": {
+                  "Name": "amzn-ami-2016.09.g-amazon-ecs-optimized",
+                  "ImageId": "ami-275ffe31"
+                },
+                "us-east-2": {
+                  "Name": "amzn-ami-2016.09.g-amazon-ecs-optimized",
+                  "ImageId": "ami-62745007"
+                },
+                "us-west-1": {
+                  "Name": "amzn-ami-2016.09.g-amazon-ecs-optimized",
+                  "ImageId": "ami-689bc208"
+                },
+                "us-west-2": {
+                  "Name": "amzn-ami-2016.09.g-amazon-ecs-optimized",
+                  "ImageId": "ami-62d35c02"
+                }
+              }
+            }
+          ]
+        },
+        "MessageAttributes": {
+          "Test": {
+            "Type": "String",
+            "Value": "TestString"
+          },
+          "TestBinary": {
+            "Type": "Binary",
+            "Value": "TestBinary"
+          }
+        },
+        "Type": "Notification",
+        "UnsubscribeUrl": "EXAMPLE",
+        "TopicArn": "arn:aws:sns:EXAMPLE",
+        "Subject": "TestInvoke"
+      }
+    }
+  ]
+}

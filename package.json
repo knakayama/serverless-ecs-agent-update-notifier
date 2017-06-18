@@ -1,0 +1,29 @@
+{
+  "name": "serverless-ecs-optimized-ami-notify",
+  "version": "1.0.0",
+  "author": "knakayama <knakayama.sh@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "preinstall": "for handler in src/handlers/*; do (cd $handler && pwd && yarn); done",
+    "deploy": "$(yarn bin)/sls deploy -v",
+    "deploy:function": "$(yarn bin)/sls deploy function -v -f $function_name",
+    "invoke": "$(yarn bin)/sls invoke -l -p event.json -f $function_name",
+    "invoke:local": "$(yarn bin)/sls invoke local -l -p event.json -f $function_name",
+    "remove": "$(yarn bin)/sls remove -v",
+    "logs": "$(yarn bin)/sls logs -t -f $function_name",
+    "info": "$(yarn bin)/sls info -v",
+    "encrypt": "./bin/encrypt.sh $key_id $plain_text"
+  },
+  "dependencies": {
+    "serverless": "^1.15.3",
+    "serverless-pseudo-parameters": "^1.1.5"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.0.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.1.0"
+  }
+}

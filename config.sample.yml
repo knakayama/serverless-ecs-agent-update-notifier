@@ -1,0 +1,5 @@
+stage: v0
+region: _YOUR_REGION_
+retentionInDays: 90
+slackChannel: _YOUR_SLACK_CHANNEL_
+kmsEncryptedSlackHookUriPath: _YOUR_KMS_ENCRYPTED_SLACK_HOOK_URI_PATH_
